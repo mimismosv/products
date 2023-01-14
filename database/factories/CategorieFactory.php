@@ -17,7 +17,7 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->sentence($nbWords = 2, $variableNbWords = true),
             'description' => fake()->text(),
             'state' => fake()->numberBetween($min = 1, $max = 2),
         ];

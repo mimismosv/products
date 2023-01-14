@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Http\Requests\StoreCategorieRequest;
 use App\Http\Requests\UpdateCategorieRequest;
+use App\Http\Resources\CategorieResource;
 
 class CategorieController extends Controller
 {
@@ -15,7 +16,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $Categorie = Categorie::query()->paginate(10);
+        return CategorieResource::collection($Categorie);
     }
 
     /**
@@ -23,7 +25,7 @@ class CategorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(StoreCategorieRequest $request)
     {
         //
     }
@@ -36,7 +38,10 @@ class CategorieController extends Controller
      */
     public function store(StoreCategorieRequest $request)
     {
-        //
+        $Categorie = Categorie::create($request->all());
+        return response()->json([
+            "data" => 'Categorie create successfully'
+        ]);
     }
 
     /**
@@ -45,9 +50,18 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show($id)
     {
-        //
+        $Categories = Categorie::find($id);
+        if (is_null($Categories)) {
+            return response()->json([
+                "data" => 'Categorie Not found'
+            ]);
+        } else {
+            return response()->json([
+                "data" => $Categories
+            ]);
+        }
     }
 
     /**

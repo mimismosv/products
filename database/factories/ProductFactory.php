@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
             'code' => fake()->ean13(),
-            'name' => fake()->name(),
+            'name' => fake()->sentence($nbWords = 2, $variableNbWords = true),
             'price' => fake()->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
             'stock' => fake()->numberBetween($min = 100, $max = 9000),
             'description' => fake()->text(),
