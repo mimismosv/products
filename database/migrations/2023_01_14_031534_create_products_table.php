@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('categories_id')
                     ->references('id')->on('categories')
                     ->onDelete('set null');
-            $table->unsignedbigInteger('discounts_id')->unique();
+            $table->unsignedbigInteger('discounts_id');
             $table->foreign('discounts_id')
                     ->references('id')->on('discounts');                    
             $table->timestamps();
