@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +15,15 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
             'code' => fake()->ean13(),
             'name' => fake()->name(),
             'price' => fake()->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
             'stock' => fake()->numberBetween($min = 100, $max = 9000),
             'description' => fake()->text(),
-            'picture' => fake()->imageUrl(640, 480, 'cats', true, 'Faker', true),
+            'picture' => $faker->imageUrl($width = 400, $height = 400),
             'state' => fake()->numberBetween($min = 1, $max = 2),
             'categories_id' => fake()->numberBetween($min = 1, $max = 50),
             'discounts_id' => fake()->numberBetween($min = 1, $max = 10),
