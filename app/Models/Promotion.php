@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Promotion extends Model
 {
-    protected $fillable = ['name', 'description', 'state'];
     use HasFactory;
+
+    protected $fillable = [
+        'product_id', 'promotion_price', 'promotion_percentage'
+    ];
 }

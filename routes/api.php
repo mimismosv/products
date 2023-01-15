@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +20,5 @@ use App\Http\Controllers\CategorieController;
 });*/
 
 
-    Route::apiResource('categories', CategorieController::class);
+    Route::apiResource('categories', CategoryController::class);
 

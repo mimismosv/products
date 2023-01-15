@@ -15,23 +15,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 50)->nullable();
-            $table->string('name');
-            $table->double('price')->nullable();
-            $table->bigInteger('stock')->nullable();
-            $table->string('description', 255)->nullable();
-            $table->string('picture', 255);
-            $table->bigInteger('state')->nullable();
-            $table->unsignedbigInteger('categories_id')->nullable();
-            $table->foreign('categories_id')
-                    ->references('id')->on('categories')
-                    ->onDelete('set null');
-            $table->unsignedbigInteger('discounts_id');
-            $table->foreign('discounts_id')
-                    ->references('id')->on('discounts');                    
+            $table->string('name',25);
+            $table->string('description')->nullable();
+            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('category_id');
+            $table->double('price', 8, 2);
+            $table->string('picture');
             $table->timestamps();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.

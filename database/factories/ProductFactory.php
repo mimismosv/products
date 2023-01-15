@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Brand;
+use App\Models\Category;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -18,15 +20,12 @@ class ProductFactory extends Factory
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
-            'code' => fake()->ean13(),
-            'name' => fake()->sentence($nbWords = 2, $variableNbWords = true),
-            'price' => fake()->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
-            'stock' => fake()->numberBetween($min = 100, $max = 9000),
+            'name' => fake()->sentence($nbWords = 1, $variableNbWords = true),
             'description' => fake()->text(),
+            'brand_id' => fake()->numberBetween($min = 1, $max = 6),
+            'category_id' => fake()->numberBetween($min = 1, $max = 6),
+            'price' => fake()->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 8),
             'picture' => $faker->imageUrl($width = 400, $height = 400),
-            'state' => fake()->numberBetween($min = 1, $max = 2),
-            'categories_id' => fake()->numberBetween($min = 1, $max = 50),
-            'discounts_id' => fake()->numberBetween($min = 1, $max = 10),
         ];
     }
 }
