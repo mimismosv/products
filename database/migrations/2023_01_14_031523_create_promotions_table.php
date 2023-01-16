@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
+            $table->string('name',100);
+            $table->double('price', 8, 2);
+            $table->string('picture');
             $table->double('promotion_price')->nullable();
             $table->double('promotion_percentage')->nullable();
             $table->timestamps();

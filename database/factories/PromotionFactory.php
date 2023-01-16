@@ -16,9 +16,16 @@ class PromotionFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
+        $price = fake()->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 8);
+        $discount = $price - ($price * (fake()->numberBetween($min = 5, $max = 40)/100));
         return [
             'product_id' => fake()->numberBetween($min = 1, $max = 50),
-            'promotion_percentage' => fake()->numberBetween($min = 5, $max = 40)
+            'name' => fake()->sentence($nbWords = 1, $variableNbWords = true),
+            'price' => $price,
+            'picture' => $faker->imageUrl($width = 400, $height = 400),            
+            'promotion_percentage' => $discount 
         ];
     }
 }

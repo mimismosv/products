@@ -36,7 +36,7 @@ class CategoryController extends Controller
         }
     }
 
-    public function update(StoreCategoryRequest $request, Category $Category)
+    public function update(UpdateCategoryRequest $request, Category $Category)
     {
         $Category->update($request->all());
         return response()->json($data = ['Category Update Successful'], 200);
