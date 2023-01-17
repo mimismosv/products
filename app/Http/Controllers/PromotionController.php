@@ -12,7 +12,7 @@ class PromotionController extends Controller
 {
     public function index()
     {
-        $Categorie = Promotion::query()->paginate(10);
+        $Categorie = Promotion::all();
         return PromotionResource::collection($Categorie);
     }
 

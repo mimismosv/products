@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $Categorie = Product::query()->paginate(10);
+        $Categorie = Product::all();
         return ProductResource::collection($Categorie);
     }
 

@@ -18,7 +18,7 @@ class PromotionFactory extends Factory
     {
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
-        $price = fake()->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 8);
+        $price = fake()->randomFloat($nbMaxDecimals = 2, $min = 25, $max = 251);
         $discount = $price - ($price * (fake()->numberBetween($min = 5, $max = 40)/100));
         return [
             'product_id' => fake()->numberBetween($min = 1, $max = 50),

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('name',100);
             $table->double('price', 8, 2);
             $table->string('picture');
-            $table->double('promotion_price')->nullable();
-            $table->double('promotion_percentage')->nullable();
+            $table->double('promotion_price', 8, 2)->nullable();
+            $table->double('promotion_percentage', 8, 2)->nullable();
             $table->timestamps();
         });
     }

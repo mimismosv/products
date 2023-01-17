@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             'description' => fake()->text(),
             'brand_id' => fake()->numberBetween($min = 1, $max = 6),
             'category_id' => fake()->numberBetween($min = 1, $max = 6),
-            'price' => fake()->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 8),
+            'price' => fake()->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 800),
             'picture' => $faker->imageUrl($width = 400, $height = 400),
         ];
     }

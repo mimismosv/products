@@ -12,7 +12,7 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $Brands = Brand::query()->paginate(10);
+        $Brands = Brand::all();
         return BrandResource::collection($Brands);
     }
 
